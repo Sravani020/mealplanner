@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meal Planner</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #app {
+            width: 90%;
+            max-width: 450px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 28px;
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen">
+            <h1><i class="fas fa-utensils"></i> AI Meal Planner</h1>
+            <p>Your smart assistant for personalized, healthy meals.</p>
+            <img src="healthy-food.png" alt="Healthy Food" class="food-img">
+            <button class="btn" onclick="navigateTo('meal-planner')">🍽 Start Planning</button>
+        </div>
+        
+        <!-- Meal Planner Screen -->
+        <div id="meal-planner-screen" class="screen hidden">
+            <h1><i class="fas fa-seedling"></i> AI Meal Planner</h1>
+            <p>Select meals based on your dietary needs.</p>
+
+            <div class="form-group">
+                <label for="meal-type">Choose Meal Type:</label>
+                <select id="meal-type">
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+                    <option>Snack</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="diet-preference">Diet Preference:</label>
+                <select id="diet-preference">
+                    <option>Vegetarian</option>
+                    <option>Vegan</option>
+                    <option>Low Carb</option>
+                    <option>High Protein</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="generateMeal()">🔍 Get AI Meal Suggestion</button>
+
+            <div id="meal-suggestion" class="hidden">
+                <h2>🍎 AI Recommended Meal</h2>
+                <p id="suggested-meal">Grilled Chicken Salad with Avocado</p>
+                <p><strong>Calories:</strong> 450 kcal</p>
+                <p><strong>Protein:</strong> 30g</p>
+                <p><strong>Carbs:</strong> 40g</p>
+            </div>
+
+            <h2>📷 Barcode Scanner</h2>
+            <p>Scan food items to track nutrition.</p>
+            <input type="file" id="barcode-input" accept="image/*" capture="environment" class="hidden">
+            <button class="btn" onclick="openBarcodeScanner()">📸 Scan Barcode</button>
+
+            <button class="btn back-btn" onclick="navigateTo('home')">⬅️ Back to Home</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
